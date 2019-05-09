@@ -10,32 +10,25 @@ import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
 public class ListaTweets {
-	
-	
 
-
-public String criaTweet(String x,int y) throws TwitterException{
+	public String criaTweet(String usuario,int indice) throws TwitterException{
 		String variavelDeAmbiente1 = System.getenv("CONSUMER_KEY");	
 		String variavelDeAmbiente2 = System.getenv("CONSUMER_SECRET");
 		String variavelDeAmbiente3 = System.getenv("TOKEN");
 		String variavelDeAmbiente4 = System.getenv("TOKEN_SECRET");
-	
-		ConfigurationBuilder cb = new ConfigurationBuilder();
-		cb.setDebugEnabled(true);
-		cb.setOAuthConsumerKey(variavelDeAmbiente1);
-		cb.setOAuthConsumerSecret(variavelDeAmbiente2);
-		cb.setOAuthAccessToken(variavelDeAmbiente3);
-		cb.setOAuthAccessTokenSecret(variavelDeAmbiente4);
 		
-		TwitterFactory tf = new TwitterFactory(cb.build());
-		Twitter tt = tf.getInstance();
-		//tt.updateStatus("Ai mais uma coisa");
-		//Paging h = new Paging(1,1);
-		ResponseList<Status> statuses = tt.getUserTimeline(x);
-		
-		
-		
-		
-		return statuses.get(y).getText();
+		ConfigurationBuilder configBuilder = new ConfigurationBuilder();
+		configBuilder.setDebugEnabled(true);
+		configBuilder.setOAuthConsumerKey(variavelDeAmbiente1);
+		configBuilder.setOAuthConsumerSecret(variavelDeAmbiente2);
+		configBuilder.setOAuthAccessToken(variavelDeAmbiente3);
+		configBuilder.setOAuthAccessTokenSecret(variavelDeAmbiente4);
+			
+		TwitterFactory twitterFactory = new TwitterFactory(configBuilder.build());
+		Twitter twitter = twitterFactory.getInstance();
+			
+		ResponseList<Status> statuses = twitter.getUserTimeline(usuario);
+			
+		return statuses.get(indice).getText();
 		}
 }

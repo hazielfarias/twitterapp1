@@ -11,29 +11,26 @@ import twitter4j.TwitterException;
 
 @Document(collection="tweets")
 public class UsuarioTwitter implements Serializable {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	String id;
 	String user;
 	List<String> tweets;
 	
-	
 	public UsuarioTwitter(String user) throws TwitterException {
 		
 		this.user = user;
 				
-		ListaTweets h = new ListaTweets();
-		List<String> nova1 = new ArrayList<>();
+		ListaTweets listaTweets = new ListaTweets();
+		List<String> novaLista = new ArrayList<>();
 		
-		int x = 0;
-		while(x<11) {
-			nova1.add(h.criaTweet(user,x));
-			x++;
+		int indice = 0;
+		while(indice<11) {
+			novaLista.add(listaTweets.criaTweet(user,indice));
+			indice++;
 		}
-		this.tweets = nova1;
+		this.tweets = novaLista;
 	}
 
 

@@ -24,10 +24,10 @@ public class UserResources {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public  ResponseEntity<List<UsuarioTwitter>> findAll(@RequestParam("user") String user)throws TwitterException{   
-		UsuarioTwitter farias = new UsuarioTwitter(user);
+		UsuarioTwitter usuario = new UsuarioTwitter(user);
 		List<UsuarioTwitter> list = new ArrayList<>();
-		list.addAll(Arrays.asList(farias));
-		userRepository.saveAll(Arrays.asList(farias));
+		list.addAll(Arrays.asList(usuario));
+		userRepository.saveAll(Arrays.asList(usuario));
 		return ResponseEntity.ok().body(list);
 		
 	} 
