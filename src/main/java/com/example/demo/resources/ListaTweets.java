@@ -15,13 +15,17 @@ public class ListaTweets {
 
 
 public String criaTweet(String x,int y) throws TwitterException{
-		
+		String variavelDeAmbiente1 = System.getenv("CONSUMER_KEY");	
+		String variavelDeAmbiente2 = System.getenv("CONSUMER_SECRET");
+		String variavelDeAmbiente3 = System.getenv("TOKEN");
+		String variavelDeAmbiente4 = System.getenv("TOKEN_SECRET");
+	
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true);
-		cb.setOAuthConsumerKey(${CONSUMER_KEY});
-		cb.setOAuthConsumerSecret(${CONSUMER_SECRET});
-		cb.setOAuthAccessToken(${TOKEN});
-		cb.setOAuthAccessTokenSecret(${TOKEN_SECRET});
+		cb.setOAuthConsumerKey(variavelDeAmbiente1);
+		cb.setOAuthConsumerSecret(variavelDeAmbiente2);
+		cb.setOAuthAccessToken(variavelDeAmbiente3);
+		cb.setOAuthAccessTokenSecret(variavelDeAmbiente4);
 		
 		TwitterFactory tf = new TwitterFactory(cb.build());
 		Twitter tt = tf.getInstance();
