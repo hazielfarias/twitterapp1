@@ -18,10 +18,10 @@ public String criaTweet(String x,int y) throws TwitterException{
 		
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true);
-		cb.setOAuthConsumerKey("G8fmFzwah9N0bmc3rihi9r6ko");
-		cb.setOAuthConsumerSecret("36jYOaqMPDpoZVtOAFtk1cagf5KxG9TAkzDOLmOJgMVWdO1ACb");
-		cb.setOAuthAccessToken("1122961205684051968-HLqWT9oEosBfU7zktpI1LzGcIQuFz4");
-		cb.setOAuthAccessTokenSecret("07XJ7AHftI0jgpHTPOrrbedjYUac7XnK6giSSIrtqKtbY");
+		cb.setOAuthConsumerKey(${CONSUMER_KEY});
+		cb.setOAuthConsumerSecret(${CONSUMER_SECRET});
+		cb.setOAuthAccessToken(${TOKEN});
+		cb.setOAuthAccessTokenSecret(${TOKEN_SECRET});
 		
 		TwitterFactory tf = new TwitterFactory(cb.build());
 		Twitter tt = tf.getInstance();
