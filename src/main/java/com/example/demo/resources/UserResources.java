@@ -21,14 +21,14 @@ import twitter4j.TwitterException;
 public class UserResources {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserService service;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public  ResponseEntity<List<UsuarioTwitter>> findAll(@RequestParam("user") String user)throws TwitterException{   
 		
-		UserService listaTweets = new UserService(user);
+		List<UsuarioTwitter> list = service.ServiceTwitter();
 		
-		return ResponseEntity.ok().body(listaTweets.ServiceTwitter());
+		return ResponseEntity.ok().body(list);
 		
 	}
 
