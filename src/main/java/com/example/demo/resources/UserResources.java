@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.reposiroty.UserRepository;
+import com.example.demo.services.UserService;
 
 import twitter4j.TwitterException;
 
@@ -24,22 +25,14 @@ public class UserResources {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public  ResponseEntity<List<UsuarioTwitter>> findAll(@RequestParam("user") String user)throws TwitterException{   
-		UsuarioTwitter usuario = new UsuarioTwitter(user);
-		List<UsuarioTwitter> list = new ArrayList<>();
-		list.addAll(Arrays.asList(usuario));
-		userRepository.saveAll(Arrays.asList(usuario));
-		return ResponseEntity.ok().body(list);
 		
-	} 
-	/*
-	@GetMapping
-	public ResponseEntity<List<UsuarioTwitter>> findAll() throws TwitterException {
-		UsuarioTwitter farias = new UsuarioTwitter("fariashaziel");
-		UsuarioTwitter haziel = new UsuarioTwitter("hazielfarias");
-		List<UsuarioTwitter> list = new ArrayList<>();
-		list.addAll(Arrays.asList(farias,haziel));
-		return ResponseEntity.ok().body(list);
+		UserService listaTweets = new UserService();
+		
+		return ResponseEntity.ok().body(listaTweets.ServiceTwitter(user));
+		
 	}
-*/
+
+	
+
 	
 }
