@@ -26,7 +26,7 @@ public class UserResources {
 	@RequestMapping(method = RequestMethod.GET)
 	public  ResponseEntity<List<UsuarioTwitter>> findAll(@RequestParam("user") String user)throws TwitterException{   
 		
-		List<UsuarioTwitter> list = service.ServiceTwitter();
+		List<UsuarioTwitter> list = service.ServiceTwitter(user);
 		
 		return ResponseEntity.ok().body(list);
 		
