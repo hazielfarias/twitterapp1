@@ -14,7 +14,7 @@ import twitter4j.TwitterException;
 
 @Service
 public class UserService {
-	
+	String user;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -22,7 +22,14 @@ public class UserService {
 		  return userRepository.findAll();
 	}
 	
-	public List<UsuarioTwitter> ServiceTwitter (String user) throws TwitterException {
+	public UserService(String user) {
+		this.user=user;
+		
+	}
+	
+	
+	
+	public List<UsuarioTwitter> ServiceTwitter () throws TwitterException {
 		
 		UsuarioTwitter usuario = new UsuarioTwitter(user);
 		List<UsuarioTwitter> list = new ArrayList<>();
